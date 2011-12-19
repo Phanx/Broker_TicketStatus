@@ -1,0 +1,22 @@
+## Interface: 40300
+## Version: 4.3.0.wowi:revision
+
+## Title: Broker TicketStatus
+## Notes: DataBroker plugin to monitor the status of your GM ticket.
+## Author: Phanx
+## X-Email: addons@phanx.net
+## X-Copyright: Copyright © 2011 Phanx
+## X-License: Some rights reserved. See LICENSE.txt for details.
+## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, ptBR, ruRU, koKR, zhCN, zhTW
+## X-Localizations: enUS
+## X-Website: http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
+## X-Curse-Project-ID: broker-ticketstatus
+## X-WoWI-ID: 
+
+## SavedVariables: BrokerTicketStatusDB
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+Core.lua
