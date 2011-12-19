@@ -2,9 +2,9 @@
 	Broker_TicketStatus
 	DataBroker plugin to replace the ticket status frame.
 	by Phanx <addons@phanx.net>
-	Copyright © 2010–2011 Phanx. Some rights reserved. See LICENSE.txt for details.
+	Copyright Â© 2010â€“2011 Phanx. Some rights reserved. See LICENSE.txt for details.
 	http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
-	http://wow.curse.com/downloads/wow-addons/details/broker-ticketstatus.aspx
+	http://www.curse.com/addons/wow/broker-ticketstatus
 ----------------------------------------------------------------------]]
 
 local L = setmetatable({}, { __index = function(t, k)
