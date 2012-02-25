@@ -1,40 +1,105 @@
+--[[--------------------------------------------------------------------
+	Broker: Ticket Status
+	DataBroker plugin to monitor the status of your GM ticket.
+	by Phanx <addons@phanx.net>
+	Copyright © 2012 Phanx. Some rights reserved. See LICENSE.txt for details.
+	http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
+	http://www.curse.com/addons/wow/broker-ticketstatus
+----------------------------------------------------------------------]]
+
+local L = setmetatable({}, { __index = function(t, k)
+	local v = tostring(k)
+	rawset(t, k, v)
+	return v
+end })
+
+------------------------------------------------------------------------
+
+local db
+
 local ticketQueueActive
 local haveTicket
 local haveResponse
 local ticketTimer
 
+local lastAlert
+local lastAlertTime = 0
+
 local refreshTime = 0
 
-local TicketStatusBroker = CreateFrame("Frame")
-TicketStatusBroker:SetScript("OnEvent", function(self, event, ...) return self[event] and self[event](self, ...) end)
-TicketStatusBroker:RegisterEvent("PLAYER_LOGIN")
-TicketStatusBroker:RegisterEvent("PLAYER_ENTERING_WORLD")
-TicketStatusBroker:RegisterEvent("GMGRESPONSE_RECEIVED")
-TicketStatusBroker:RegisterEvent("GMSURVEY_DISPLAY")
-TicketStatusBroker:RegisterEvent("UPDATE_GM_STATUS")
-TicketStatusBroker:RegisterEvent("UPDATE_TICKET")
+local BrokerTicketStatus = CreateFrame("Frame")
+BrokerTicketStatus:SetScript("OnEvent", function(self, event, ...) return self[event] and self[event](self, ...) end)
+BrokerTicketStatus:RegisterEvent("ADDON_LOADED")
 
-function TicketStatusBroker:PLAYER_LOGIN()
-	print("PLAYER_LOGIN")
+------------------------------------------------------------------------
+
+function BrokerTicketStatus:ADDON_LOADED(addon)
+	if addon ~= "Broker_TicketStatus" then return end
+	-- print("ADDON_LOADED", addon)
+
+	local defaults = {
+		alert = true,
+		alertColor = { r = 0.25, g = 0.8, b = 1 },
+		textNoTicket = true,
+	}
+	local function initDB(defaults, db)
+		if type(defaults) ~= "table" then return {} end
+		if type(db) ~= "table" then db = {} end
+		for k, v in pairs(defaults) do
+			if type(v) == "table" then
+				db[k] = initDB(v, db[k])
+			elseif type(v) ~= type(db[k]) then
+				db[k] = v
+			end
+		end
+		return db
+	end
+	db = initDB(defaults, BrokerTicketStatusDB)
+	BrokerTicketStatusDB = db
+
+	self:UnregisterEvent("ADDON_LOADED")
+	self.ADDON_LOADED = nil
+
+	if IsLoggedIn() then
+		self:PLAYER_LOGIN()
+	else
+		self:RegisterEvent("PLAYER_LOGIN")
+	end
+end	
+
+function BrokerTicketStatus:PLAYER_LOGIN()
+	-- print("PLAYER_LOGIN")
+
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	self:RegisterEvent("GMRESPONSE_RECEIVED")
+	self:RegisterEvent("GMSURVEY_DISPLAY")
+	self:RegisterEvent("UPDATE_GM_STATUS")
+	self:RegisterEvent("UPDATE_TICKET")
+
+	self:UnregisterEvent("PLAYER_LOGIN")
+	self.PLAYER_LOGIN = nil
+
 	GetGMStatus()
 end
 
-function TicketStatusBroker:PLAYER_ENTERING_WORLD()
-	print("PLAYER_ENTERING_WORLD")
+function BrokerTicketStatus:PLAYER_ENTERING_WORLD()
+	-- print("PLAYER_ENTERING_WORLD")
 	GetGMTicket()
 end
 
-function TicketStatusBroker:UPDATE_TICKET(category, ticketText, ticketOpenTime, oldestTicketTime, updateTime, assignedToGM, openedByGM, waitTimeOverrideMessage, waitTimeOverrideMinutes)
+function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, oldestTicketTime, updateTime, assignedToGM, openedByGM, waitTimeOverrideMessage, waitTimeOverrideMinutes)
 	print("UPDATE_TICKET")
-	print("  [1] category:", category or "nil")
-	print("  [2] ticketText:", ticketText or "nil")
-	print("  [3] ticketOpenTime:", ticketOpenTime or "nil")
-	print("  [4] oldestTicketTime:", oldestTicketTime or "nil")
-	print("  [5] updateTime:", updateTime or "nil")
-	print("  [6] assignedToGM:", assignedToGM or "nil")
-	print("  [7] openedByGM:", openedByGM or "nil")
-	print("  [8] waitTimeOverrideMessage:", waitTimeOverrideMessage or "nil")
-	print("  [9] waitTimeOverrideMinutes:", waitTimeOverrideMinutes or "nil")
+	if category then
+		print("  [1] category:", category)
+		-- print("  [2] ticketText:", ticketText or "nil")
+		print("  [3] ticketOpenTime:", ticketOpenTime or "nil")
+		print("  [4] oldestTicketTime:", oldestTicketTime or "nil")
+		print("  [5] updateTime:", updateTime or "nil")
+		print("  [6] assignedToGM:", assignedToGM or "nil")
+		print("  [7] openedByGM:", openedByGM or "nil")
+		print("  [8] waitTimeOverrideMessage:", waitTimeOverrideMessage or "nil")
+		print("  [9] waitTimeOverrideMinutes:", waitTimeOverrideMinutes or "nil")
+	end
 
 	if (category or hasGMSurvey) and not (GMChatStatusFrame and GMChatStatusFrame:IsShown()) then
 		-- You have an open ticket.
@@ -69,7 +134,7 @@ function TicketStatusBroker:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 				-- We are currently experiencing a high volume of petitions.
 				self.statusText = GM_TICKET_HIGH_VOLUME
 			elseif estimatedWaitTime > 300 then
-				-- Averate ticket wait time: %s
+				-- Average ticket wait time: %s
 				self.statusText = GM_TICKET_WAIT_TIME:gsub("\n", ""):format(SecondsToTime(estimatedWaitTime, 1))
 			else
 				-- Your ticket will be serviced soon.
@@ -79,19 +144,23 @@ function TicketStatusBroker:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 
 		haveTicket = true
 		haveResponse = false
+
+		self.dataObject.text = self.titleText
 	else
 		-- The player does not have a ticket.
 		haveTicket = false
 		haveResponse = false
+		ticketTimer = nil
 
 		-- Open a Ticket
 		self.titleText = HELP_TICKET_OPEN
 		self.statusText = nil
+
+		self.dataObject.text = db.textNoTicket and self.titleText or ""
 	end
-	self.dataObject.text = self.titleText
 end
 
-function TicketStatusBroker:UPDATE_GM_STATUS(status)
+function BrokerTicketStatus:UPDATE_GM_STATUS(status)
 	print("UPDATE_GM_STATUS")
 	print("  [1] status:", status or "nil")
 	if status == GMTICKET_QUEUE_STATUS_ENABLED then
@@ -100,86 +169,108 @@ function TicketStatusBroker:UPDATE_GM_STATUS(status)
 		ticketQueueActive = nil
 		if status == GMTICKET_QUEUE_STATUS_DISABLED then
 			-- "GM Help Tickets are currently unavailable."
+			-- HELP_TICKET_QUEUE_DISABLED
 		end
 	end
 end
 
-function TicketStatusBroker:GMRESPONSE_RECEIVED(ticketText, responseText)
+function BrokerTicketStatus:GMRESPONSE_RECEIVED(ticketText, responseText)
 	print("GMRESPONSE_RECEIVED")
-	print("  [1] ticketText:", ticketText or "nil")
-	print("  [2] responseText:", responseText or "nil")
+	-- print("  [1] ticketText:", ticketText or "nil")
+	-- print("  [2] responseText:", responseText or "nil")
 
 	haveResponse = true
 	haveTicket = nil
 
 	-- "You have received a ticket response. Click here to read it."
-	self.titleText = "GM Response!"
+	self.titleText = L["GM Response!"]
 	self.statusText = GM_RESPONSE_ALERT
+
+	if db.alert and (lastAlert ~= "GMRESPONSE_RECEIVED" or GetTime() - lastAlertTime > 10) then
+		RaidNotice_AddMessage(RaidWarningFrame, L["You have received a GM ticket response!"], db.alertColor)
+		lastAlert, lastAlertTime = "GMRESPONSE_RECEIVED", GetTime()
+	end
 
 	self.dataObject.text = self.titleText
 end
 
-function TicketStatusBroker:GMSURVEY_DISPLAY(...)
-	printEvent("GMSURVEY_DISPLAY", ...)
+function BrokerTicketStatus:GMSURVEY_DISPLAY(...)
+	print("GMSURVEY_DISPLAY", ...)
 
 	haveGMSurvey = true
 	haveResponse = nil
 	haveTicket = nil
 
 	-- You have been chosen to fill out a GM survey.
-	self.titleText = "GM Survey!"
+	self.titleText = L["GM Survey!"]
 	self.statusText = CHOSEN_FOR_GMSURVEY
+
+	if db.alert and (lastAlert ~= "GMSURVEY_DISPLAY" or GetTime() - lastAlertTime > 10)  then
+		RaidNotice_AddMessage(RaidWarningFrame, L["You have been chosen to fill out a GM survey!"], db.alertColor)
+		lastAlert, lastAlertTime = "GMSURVEY_DISPLAY", GetTime()
+	end
 
 	self.dataObject.text = self.titleText
 end
 
-function TicketStatusBroker:OnUpdate(e)
-	refreshTime = refreshTime - e
+function BrokerTicketStatus:OnUpdate(elapsed)
+	refreshTime = refreshTime - elapsed
 	if refreshTime <= 0 then
-		refreshTime = GMTICKET_CHECK_INTERVAL
+		refreshTime = 300 -- GMTICKET_CHECK_INTERVAL -- 600
 		GetGMTicket()
 	end
 
-	GameTooltip:SetText("Ticket Status")
+	GameTooltip:SetText(L["Ticket Status"])
 	GameTooltip:AddLine(self.titleText, 1, 1, 1)
 	if self.statusText then
-		GameTooltip:AddLine(self.statusText)
-		if ticketTimer then
-			ticketTimer = ticketTimer - elapsed
-			GameTooltip:AddLine(" ")
-			GameTooltip:AddLine(GM_TICKET_WAIT_TIME:format(SecondsToTime(ticketTimer, 1)), 1, 1, 1)
-		end
+		GameTooltip:AddLine(self.statusText, 1, 1, 1)
+	end
+	if ticketTimer then
+		ticketTimer = ticketTimer - elapsed
+		local waitTime = GM_TICKET_WAIT_TIME:gsub("\\n", " "):format(SecondsToTime(ticketTimer, 1))
+		GameTooltip:AddLine(" ")
+		GameTooltip:AddLine(waitTime, 1, 1, 1)
 	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine(HELPFRAME_TICKET_CLICK_HELP, 0.8, 0.8, 0.8)
-	GameTooltip:AddLine("Right-click for options.", 0.8, 0.8, 0.8)
+	GameTooltip:AddLine(L["Right-click for options."], 0.8, 0.8, 0.8)
 	GameTooltip:Show()
 end
 
-TicketStatusBroker.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Ticket Status", {
+BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Ticket Status", {
 	type = "data",
 	icon = "Interface\\HelpFrame\\HelpIcon-OpenTicket",
-	name = "Ticket Status",
+	name = L["Ticket Status"],
 	text = HELP_TICKET_OPEN, -- Open a Ticket
-	OnEnter = function(dataObject)
-		GameTooltip:SetOwner(dataObject, "ANCHOR_TOP")
-		if haveTicket then
-			TicketStatusBroker:SetScript("OnUpdate", TicketStatusBroker.OnUpdate)
+	OnEnter = function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_NONE")
+		GameTooltip:ClearAllPoints()
+		local cx, cy = self:GetCenter()
+		if cy < GetScreenHeight() / 2 then
+			GameTooltip:SetPoint("BOTTOM", self, "TOP", dx, dy)
 		else
-			GameTooltip:SetText("Ticket Status")
+			GameTooltip:SetPoint("TOP", self, "BOTTOM", dx, dy)
+		end
+
+		if haveTicket then
+			BrokerTicketStatus:SetScript("OnUpdate", BrokerTicketStatus.OnUpdate)
+		else
+			GameTooltip:SetText(L["Ticket Status"])
 			if haveResponse then
 				GameTooltip:AddLine(GM_RESPONSE_ALERT, 1, 1, 1)
 			elseif haveGMSurvey then
 				GameTooltip:AddLine(CHOSEN_FOR_GMSURVEY, 1, 1, 1)
+			elseif ticketQueueActive then
+				GameTooltip:AddLine(L["Click here to open a new ticket."], 1, 1, 1)
 			else
-				GameTooltip:AddLine("Click here to open a new ticket.", 0.8, 0.8, 0.8)
+				GameTooltip:AddLine(HELP_TICKET_QUEUE_DISABLED, 1, 0.6, 0.6)
 			end
-			GameTooltip:AddLine("Right-click for options.", 0.8, 0.8, 0.8)
+			GameTooltip:AddLine(L["Right-click for options."], 0.6, 0.6, 0.6)
 			GameTooltip:Show()
 		end
 	end,
 	OnLeave = function(dataObject)
-		TicketStatusBroker:SetScript("OnUpdate", nil)
+		BrokerTicketStatus:SetScript("OnUpdate", nil)
 		GameTooltip:Hide()
 		pluginFrame = nil
 	end,
@@ -216,3 +307,7 @@ TicketStatusBroker.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 		end
 	end,
 })
+
+------------------------------------------------------------------------
+
+local opt
