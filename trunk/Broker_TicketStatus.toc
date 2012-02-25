@@ -1,11 +1,11 @@
 ## Interface: 40300
-## Version: 4.3.0.wowi:revision
+## Version: 4.3.2.wowi:revision
 
-## Title: Broker TicketStatus
-## Notes: DataBroker plugin to monitor the status of your GM ticket.
+## Title: Broker: Ticket Status
+## Notes: GM help ticket status plugin for DataBroker displays.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
-## X-Copyright: Copyright © 2011 Phanx
+## X-Copyright: Copyright © 2012 Phanx
 ## X-License: Some rights reserved. See LICENSE.txt for details.
 ## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, ptBR, ruRU, koKR, zhCN, zhTW
 ## X-Localizations: enUS
