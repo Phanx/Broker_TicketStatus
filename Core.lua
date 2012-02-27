@@ -79,6 +79,9 @@ function BrokerTicketStatus:PLAYER_LOGIN()
 	self:UnregisterEvent("PLAYER_LOGIN")
 	self.PLAYER_LOGIN = nil
 
+	TicketStatusFrame:HookScript("OnShow", TicketStatusFrame.Hide)
+	TicketStatusFrame:Hide()
+
 	GetGMStatus()
 end
 
