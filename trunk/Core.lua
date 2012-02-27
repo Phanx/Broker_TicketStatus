@@ -88,7 +88,8 @@ function BrokerTicketStatus:PLAYER_ENTERING_WORLD()
 end
 
 function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, oldestTicketTime, updateTime, assignedToGM, openedByGM, waitTimeOverrideMessage, waitTimeOverrideMinutes)
-	print("UPDATE_TICKET")
+	-- print("UPDATE_TICKET")
+--[[
 	if category then
 		print("  [1] category:", category)
 		-- print("  [2] ticketText:", ticketText or "nil")
@@ -100,7 +101,7 @@ function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 		print("  [8] waitTimeOverrideMessage:", waitTimeOverrideMessage or "nil")
 		print("  [9] waitTimeOverrideMinutes:", waitTimeOverrideMinutes or "nil")
 	end
-
+]]
 	if (category or hasGMSurvey) and not (GMChatStatusFrame and GMChatStatusFrame:IsShown()) then
 		-- You have an open ticket.
 		self.titleText = TICKET_STATUS
@@ -161,8 +162,8 @@ function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 end
 
 function BrokerTicketStatus:UPDATE_GM_STATUS(status)
-	print("UPDATE_GM_STATUS")
-	print("  [1] status:", status or "nil")
+	-- print("UPDATE_GM_STATUS")
+	-- print("  [1] status:", status or "nil")
 	if status == GMTICKET_QUEUE_STATUS_ENABLED then
 		ticketQueueActive = true
 	else
@@ -175,7 +176,7 @@ function BrokerTicketStatus:UPDATE_GM_STATUS(status)
 end
 
 function BrokerTicketStatus:GMRESPONSE_RECEIVED(ticketText, responseText)
-	print("GMRESPONSE_RECEIVED")
+	-- print("GMRESPONSE_RECEIVED")
 	-- print("  [1] ticketText:", ticketText or "nil")
 	-- print("  [2] responseText:", responseText or "nil")
 
@@ -195,7 +196,7 @@ function BrokerTicketStatus:GMRESPONSE_RECEIVED(ticketText, responseText)
 end
 
 function BrokerTicketStatus:GMSURVEY_DISPLAY(...)
-	print("GMSURVEY_DISPLAY", ...)
+	-- print("GMSURVEY_DISPLAY", ...)
 
 	haveGMSurvey = true
 	haveResponse = nil
@@ -283,6 +284,19 @@ BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 			if haveGMSurvey then
 				GMSurveyFrame_LoadUI()
 				ShowUIPanel(GMSurveyFrame)
+				----------------------------------------------------
+				-- This is kind of a hack, and I don't like it,
+				-- but I can't think of a better solution right now,
+				-- since GMSURVEY_DISPLAY doesn't fire again once
+				-- the survey is no longer available. :(
+				----------------------------------------------------
+				if not BrokerTicketStatus.hookedGMSurveyFrame then
+					GMSurveyFrame:HookScript("OnHide", function()
+						haveGMSurvey = nil
+						BrokerTicketStatus:UPDATE_TICKET()
+					end)
+					BrokerTicketStatus.hookedGMSurveyFrame = true
+				end
 			elseif StaticPopup_Visible("HELP_TICKET_ABANDON_CONFIRM") then
 				StaticPopup_Hide("HELP_TICKET_ABANDON_CONFIRM")
 			elseif StaticPopup_Visible("HELP_TICKET") then
