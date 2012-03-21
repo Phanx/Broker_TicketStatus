@@ -1,5 +1,5 @@
 ## Interface: 40300
-## Version: 4.3.2.wowi:revision
+## Version: 4.3.3.wowi:revision
 
 ## Title: Broker: Ticket Status
 ## Notes: GM help ticket status plugin for DataBroker displays.
@@ -11,7 +11,7 @@
 ## X-Localizations: enUS
 ## X-Website: http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
 ## X-Curse-Project-ID: broker-ticketstatus
-## X-WoWI-ID: 
+## X-WoWI-ID:
 
 ## SavedVariables: BrokerTicketStatusDB
 
