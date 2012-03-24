@@ -1,9 +1,9 @@
 ﻿Broker_TicketStatus
-=================
+===================
 
 * Written by Phanx <addons@phanx.net>
 * Copyright © 2010–2011 Phanx.  Some rights reserved. See LICENSE.txt for details.
-* http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
+* http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
 * http://www.curse.com/addons/wow/broker-ticketstatus
 
 

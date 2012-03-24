@@ -7,11 +7,135 @@
 	http://www.curse.com/addons/wow/broker-ticketstatus
 ----------------------------------------------------------------------]]
 
-local L = setmetatable({}, { __index = function(t, k)
-	local v = tostring(k)
-	rawset(t, k, v)
-	return v
-end })
+local L = {}
+do
+	local LOCALE = GetLocale()
+	if LOCALE == "deDE" then
+		--------------------------------------------------------
+		--	Deutsch
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "esES" or LOCALE == "esMX" then
+		--------------------------------------------------------
+		--	Español
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "frFR" then
+		--------------------------------------------------------
+		--	Français
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "ptBR" then
+		--------------------------------------------------------
+		--	Português (Brasil)
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "ruRU" then
+		--------------------------------------------------------
+		--	Русский
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "koKR" then
+		--------------------------------------------------------
+		--	한국어
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "zhCN" then
+		--------------------------------------------------------
+		--	简体中文
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "zhTW" then
+		--------------------------------------------------------
+		--	正體中文
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["GM Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Selected for Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+	end
+	setmetatable(L, { __index = function(t, k)
+		local v = tostring(k)
+		rawset(t, k, v)
+		return v
+	end })
+end
 
 ------------------------------------------------------------------------
 
@@ -65,7 +189,7 @@ function BrokerTicketStatus:ADDON_LOADED(addon)
 	else
 		self:RegisterEvent("PLAYER_LOGIN")
 	end
-end	
+end
 
 function BrokerTicketStatus:PLAYER_LOGIN()
 	-- print("PLAYER_LOGIN")
@@ -94,15 +218,15 @@ function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 	-- print("UPDATE_TICKET")
 --[[
 	if category then
-		print("  [1] category:", category)
+		-- print("  [1] category:", category)
 		-- print("  [2] ticketText:", ticketText or "nil")
-		print("  [3] ticketOpenTime:", ticketOpenTime or "nil")
-		print("  [4] oldestTicketTime:", oldestTicketTime or "nil")
-		print("  [5] updateTime:", updateTime or "nil")
-		print("  [6] assignedToGM:", assignedToGM or "nil")
-		print("  [7] openedByGM:", openedByGM or "nil")
-		print("  [8] waitTimeOverrideMessage:", waitTimeOverrideMessage or "nil")
-		print("  [9] waitTimeOverrideMinutes:", waitTimeOverrideMinutes or "nil")
+		-- print("  [3] ticketOpenTime:", ticketOpenTime or "nil")
+		-- print("  [4] oldestTicketTime:", oldestTicketTime or "nil")
+		-- print("  [5] updateTime:", updateTime or "nil")
+		-- print("  [6] assignedToGM:", assignedToGM or "nil")
+		-- print("  [7] openedByGM:", openedByGM or "nil")
+		-- print("  [8] waitTimeOverrideMessage:", waitTimeOverrideMessage or "nil")
+		-- print("  [9] waitTimeOverrideMinutes:", waitTimeOverrideMinutes or "nil")
 	end
 ]]
 	if (category or hasGMSurvey) and not (GMChatStatusFrame and GMChatStatusFrame:IsShown()) then
@@ -206,11 +330,11 @@ function BrokerTicketStatus:GMSURVEY_DISPLAY(...)
 	haveTicket = nil
 
 	-- You have been chosen to fill out a GM survey.
-	self.titleText = L["GM Survey!"]
+	self.titleText = L["Selected for Survey!"]
 	self.statusText = CHOSEN_FOR_GMSURVEY
 
 	if db.alert and (lastAlert ~= "GMSURVEY_DISPLAY" or GetTime() - lastAlertTime > 10)  then
-		RaidNotice_AddMessage(RaidWarningFrame, L["You have been chosen to fill out a GM survey!"], db.alertColor)
+		RaidNotice_AddMessage(RaidWarningFrame, CHOSEN_FOR_GMSURVEY, db.alertColor)
 		lastAlert, lastAlertTime = "GMSURVEY_DISPLAY", GetTime()
 	end
 
@@ -241,12 +365,13 @@ function BrokerTicketStatus:OnUpdate(elapsed)
 	GameTooltip:Show()
 end
 
-BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Ticket Status", {
-	type = "data",
+BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
+	type = "data source",
 	icon = "Interface\\HelpFrame\\HelpIcon-OpenTicket",
 	name = L["Ticket Status"],
 	text = HELP_TICKET_OPEN, -- Open a Ticket
 	OnEnter = function(self)
+		-- print("OnEnter")
 		GameTooltip:SetOwner(self, "ANCHOR_NONE")
 		GameTooltip:ClearAllPoints()
 		local cx, cy = self:GetCenter()
@@ -265,7 +390,7 @@ BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 			elseif haveGMSurvey then
 				GameTooltip:AddLine(CHOSEN_FOR_GMSURVEY, 1, 1, 1)
 			elseif ticketQueueActive then
-				GameTooltip:AddLine(L["Click here to open a new ticket."], 1, 1, 1)
+				GameTooltip:AddLine(L["Click to open a new ticket."], 1, 1, 1)
 			else
 				GameTooltip:AddLine(HELP_TICKET_QUEUE_DISABLED, 1, 0.6, 0.6)
 			end
@@ -274,13 +399,14 @@ BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 		end
 	end,
 	OnLeave = function(dataObject)
+		-- print("OnLeave")
 		BrokerTicketStatus:SetScript("OnUpdate", nil)
 		GameTooltip:Hide()
-		pluginFrame = nil
 	end,
 	OnClick = function(dataObject, button)
+		-- print("OnClick", button)
 		if button == "RightButton" then
-			-- TODO: open options
+			ToggleDropDownMenu(nil, nil, BrokerTicketStatusMenu, dataObject, 0, 0, nil, nil, 10)
 		elseif haveTicket and button == "MiddleButton" then
 			StaticPopup_Show("HELP_TICKET_ABANDON_CONFIRM")
 		else
@@ -327,4 +453,107 @@ BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 
 ------------------------------------------------------------------------
 
-local opt
+do
+	local menu = CreateFrame("Frame", "BrokerTicketStatusMenu", nil, "UIDropDownMenuTemplate")
+	menu.displayMode = "MENU"
+
+	local textNoTicket_func = function()
+		local show = not BrokerTicketStatusDB.textNoTicket
+		BrokerTicketStatusDB.textNoTicket = show
+
+		local obj = BrokerTicketStatus.dataObject
+		if obj.text == HELP_TICKET_OPEN and not show then
+			obj.text = ""
+		elseif show and obj.text == "" then
+			obj.text = HELP_TICKET_OPEN
+		end
+	end
+	local textNoTicket_checked = function()
+		return BrokerTicketStatusDB.textNoTicket
+	end
+
+	local alert_func = function()
+		BrokerTicketStatusDB.alert = not BrokerTicketStatusDB.alert
+	end
+	local alert_checked = function()
+		return BrokerTicketStatusDB.alert
+	end
+
+	local alertColor_swatchFunc = function()
+		BrokerTicketStatusDB.alertColor.r, BrokerTicketStatusDB.alertColor.g, BrokerTicketStatusDB.alertColor.b = ColorPickerFrame:GetColorRGB()
+	end
+	local alertColor_cancelFunc = function(previous)
+		if type(previous) == "table" and previous.r then
+			BrokerTicketStatusDB.alertColor.r, BrokerTicketStatusDB.alertColor.g, BrokerTicketStatusDB.alertColor.b = previous.r, previous.g, previous.b
+		end
+	end
+
+	local close_func = function()
+		return CloseDropDownMenus()
+	end
+
+	local info = {}
+	menu.initialize = function(menu, level)
+		if not level then return end
+		local info = wipe(info)
+
+		info.text = L["Ticket Status"]
+		info.isTitle = 1
+		info.notCheckable = 1
+		UIDropDownMenu_AddButton(info, level)
+
+		info.isTitle = nil
+
+		info.text = " "
+		info.disabled = 1
+		info.notCheckable = 1
+		UIDropDownMenu_AddButton(info, level)
+
+		info.disabled = nil
+		info.notCheckable = nil
+
+		info.keepShownOnClick = 1
+
+		info.text = L["Show text without ticket"]
+		info.func = textNoTicket_func
+		info.checked = textNoTicket_checked
+		UIDropDownMenu_AddButton(info, level)
+
+		info.text = L["Show status change alerts"]
+		info.func = alert_func
+		info.checked = alert_checked
+		UIDropDownMenu_AddButton(info, level)
+
+		info.checked = nil
+		info.notCheckable = 1
+
+		info.text = L["Alert color"]
+		info.func = UIDropDownMenuButton_OpenColorPicker
+		info.hasColorSwatch = true
+		info.swatchFunc = alertColor_swatchFunc
+		info.cancelFunc = alertColor_cancelFunc
+		info.r = BrokerTicketStatusDB.alertColor.r
+		info.g = BrokerTicketStatusDB.alertColor.g
+		info.b = BrokerTicketStatusDB.alertColor.b
+		UIDropDownMenu_AddButton(info, level)
+
+		info.func = nil
+		info.hasColorSwatch = nil
+		info.swatchFunc = nil
+		info.cancelFunc = nil
+		info.r, info.g, info.b = nil, nil, nil
+
+		info.text = " "
+		info.disabled = 1
+		UIDropDownMenu_AddButton(info, level)
+
+		info.disabled = nil
+		info.keepShownOnClick = nil
+
+		info.text = CLOSE
+		info.func = close_func
+		UIDropDownMenu_AddButton(info, level)
+	end
+
+	BrokerTicketStatus.menu = menu
+end
