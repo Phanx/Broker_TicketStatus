@@ -1,17 +1,17 @@
-## Interface: 40300
-## Version: 4.3.3.wowi:revision
+## Interface: 50001
+## Version: 5.0.1.wowi:revision
 
 ## Title: Broker: Ticket Status
-## Notes: GM help ticket status plugin for DataBroker displays.
+## Notes: Show the status of your GM Help Ticket on your DataBroker display.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
-## X-Copyright: Copyright © 2012 Phanx
-## X-License: Some rights reserved. See LICENSE.txt for details.
-## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, ptBR, ruRU, koKR, zhCN, zhTW
-## X-Localizations: enUS
-## X-Website: http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
+## X-Copyright: Copyright © 2012 Phanx. All rights reserved.
+## X-License: See accompanying LICENSE.txt for details.
+## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
+## X-Localizations: enUS, deDE, esES, esMX
+## X-Website: http://www.wowinterface.com/downloads/info20888
 ## X-Curse-Project-ID: broker-ticketstatus
-## X-WoWI-ID:
+## X-WoWI-ID: 20888
 
 ## SavedVariables: BrokerTicketStatusDB
 

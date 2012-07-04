@@ -2,7 +2,8 @@
 	Broker: Ticket Status
 	DataBroker plugin to monitor the status of your GM ticket.
 	by Phanx <addons@phanx.net>
-	Copyright © 2012 Phanx. Some rights reserved. See LICENSE.txt for details.
+	Copyright © 2012 Phanx. All rights reserved.
+	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
 	http://www.curse.com/addons/wow/broker-ticketstatus
 ----------------------------------------------------------------------]]
@@ -13,32 +14,32 @@ do
 	if LOCALE == "deDE" then
 		--------------------------------------------------------
 		--	Deutsch
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2012-07-04 by Phanx
 		--------------------------------------------------------
-	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
-	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
-	--	L["Click to open a new ticket."] = ""
-	--	L["Right-click for options."] = ""
-	--	L["Show text without ticket"] = ""
-	--	L["Show status change alerts"] = ""
-	--	L["Alert color"] = ""
+		L["Ticket Status"] = "Ticketstatus"
+		L["Response!"] = "Antwort!"
+		L["You have received a GM ticket response!"] = "Sie haben eine Antwort auf Ihr Ticket erhalten."
+		L["Survey!"] = "Umfrage!"
+		L["Click to open a new ticket."] = "Linksklick um ein Ticket eröffnen."
+		L["Right-click for options."] = "Rechtsklick für Optionen."
+		L["Show text without ticket"] = "Text ohne offenes Ticket anzeigen"
+		L["Show status change alerts"] = "Statusänderungsbenachrichtigungen zeigen"
+		L["Alert color"] = "Benachrichtigungenfarbe"
 
 	elseif LOCALE == "esES" or LOCALE == "esMX" then
 		--------------------------------------------------------
 		--	Español
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2012-07-04 by Phanx
 		--------------------------------------------------------
-	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
-	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
-	--	L["Click to open a new ticket."] = ""
-	--	L["Right-click for options."] = ""
-	--	L["Show text without ticket"] = ""
-	--	L["Show status change alerts"] = ""
-	--	L["Alert color"] = ""
+		L["Ticket Status"] = "Estado consulta"
+		L["Response!"] = "Respuesta!"
+		L["You have received a GM ticket response!"] = "Has recibido una respuesta a tu consulta."
+		L["Survey!"] = "Encuesta!"
+		L["Click to open a new ticket."] = "Haz clic para abrir una consulta,"
+		L["Right-click for options."] = "Haz clic derecho para obtener opciones."
+		L["Show text without ticket"] = "Mostrar texto sin consulta abierta"
+		L["Show status change alerts"] = "Mostrar alertas para cambios de estado"
+		L["Alert color"] = "Color de alertas"
 
 	elseif LOCALE == "frFR" then
 		--------------------------------------------------------
@@ -46,9 +47,24 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
+	--	L["Click to open a new ticket."] = ""
+	--	L["Right-click for options."] = ""
+	--	L["Show text without ticket"] = ""
+	--	L["Show status change alerts"] = ""
+	--	L["Alert color"] = ""
+
+	elseif LOCALE == "itIT" then
+		--------------------------------------------------------
+		--	Italiano
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+	--	L["Ticket Status"] = ""
+	--	L["Response!"] = ""
+	--	L["You have received a GM ticket response!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -61,9 +77,9 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -76,9 +92,9 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -91,9 +107,9 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -106,9 +122,9 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -121,9 +137,9 @@ do
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
 	--	L["Ticket Status"] = ""
-	--	L["GM Response!"] = ""
+	--	L["Response!"] = ""
 	--	L["You have received a GM ticket response!"] = ""
-	--	L["Selected for Survey!"] = ""
+	--	L["Survey!"] = ""
 	--	L["Click to open a new ticket."] = ""
 	--	L["Right-click for options."] = ""
 	--	L["Show text without ticket"] = ""
@@ -311,7 +327,7 @@ function BrokerTicketStatus:GMRESPONSE_RECEIVED(ticketText, responseText)
 	haveTicket = nil
 
 	-- "You have received a ticket response. Click here to read it."
-	self.titleText = L["GM Response!"]
+	self.titleText = L["Response!"]
 	self.statusText = GM_RESPONSE_ALERT
 
 	if db.alert and (lastAlert ~= "GMRESPONSE_RECEIVED" or GetTime() - lastAlertTime > 10) then
@@ -330,7 +346,7 @@ function BrokerTicketStatus:GMSURVEY_DISPLAY(...)
 	haveTicket = nil
 
 	-- You have been chosen to fill out a GM survey.
-	self.titleText = L["Selected for Survey!"]
+	self.titleText = L["Survey!"]
 	self.statusText = CHOSEN_FOR_GMSURVEY
 
 	if db.alert and (lastAlert ~= "GMSURVEY_DISPLAY" or GetTime() - lastAlertTime > 10)  then

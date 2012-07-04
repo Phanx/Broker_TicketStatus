@@ -2,7 +2,7 @@
 ===================
 
 * Written by Phanx <addons@phanx.net>
-* Copyright © 2010–2011 Phanx.  Some rights reserved. See LICENSE.txt for details.
+* Copyright © 2010–2011 Phanx. All rights reserved. See LICENSE.txt for details.
 * http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
 * http://www.curse.com/addons/wow/broker-ticketstatus
 
@@ -19,13 +19,13 @@ Right-click the plugin for options.
 Localization
 ------------
 
-Compatible with English, Deutsch, Español, Français, Português, Русский,
-한국어, 简体中文, and 正體中文 game clients.
+Compatible with English, Deutsch, Español, Français, Italiano, Português,
+Русский, 한국어, 简体中文, and 正體中文 game clients.
 
-Translated into English.
+Translated into English, Deutsch, and Español.
 
-For corrections or updates, send me a PM on either download site, or use
-the localization system on CurseForge:
+To add or update translations for any language, see the Localization tab
+on the CurseForge project page:
 
 http://wow.curseforge.com/addons/broker-ticketstatus/localization/
 
@@ -33,9 +33,15 @@ http://wow.curseforge.com/addons/broker-ticketstatus/localization/
 Feedback
 --------
 
-Please use the ticket system on either download site report bugs or
-request features. Use the comments section only for general questions
-or comments.
+Bugs, errors, or other problems:
+	Submit a bug report ticket on either download page.
 
-If you need to contact me privately, you may do by private message
-on either download site, or by email at <addons@phanx.net>.
+Feature requests or other suggestions:
+	Submit a feature request ticket system on either download page.
+
+General questions or comments:
+	Post a comment on either download page.
+
+If you need to contact me privately for a reason other than those listed
+above, you can send me a private message on either download site, or
+email me at <addons@phanx.net>.
