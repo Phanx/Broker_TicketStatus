@@ -1,8 +1,7 @@
 --[[--------------------------------------------------------------------
 	Broker: Ticket Status
 	DataBroker plugin to monitor the status of your GM ticket.
-	by Phanx <addons@phanx.net>
-	Copyright © 2012 Phanx. All rights reserved.
+	Copyright (c) 2012 Phanx <addons@phanx.net>. All rights reserved.
 	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info-BrokerTicketStatus.html
 	http://www.curse.com/addons/wow/broker-ticketstatus
@@ -423,6 +422,8 @@ BrokerTicketStatus.dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Tick
 		-- print("OnClick", button)
 		if button == "RightButton" then
 			ToggleDropDownMenu(nil, nil, BrokerTicketStatusMenu, dataObject, 0, 0, nil, nil, 10)
+		elseif not ticketQueueActive then
+			return
 		elseif haveTicket and button == "MiddleButton" then
 			StaticPopup_Show("HELP_TICKET_ABANDON_CONFIRM")
 		else

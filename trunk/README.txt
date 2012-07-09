@@ -1,8 +1,8 @@
 ﻿Broker_TicketStatus
 ===================
 
-* Written by Phanx <addons@phanx.net>
-* Copyright © 2010–2011 Phanx. All rights reserved. See LICENSE.txt for details.
+* Copyright (c) 2012 Phanx <addons@phanx.net>. All rights reserved.
+* See the accompanying LICENSE file for more information.
 * http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
 * http://www.curse.com/addons/wow/broker-ticketstatus
 
@@ -10,10 +10,11 @@
 Description
 -----------
 
-Broker_TicketStatus is a DataBroker plugin to monitor your current GM
-ticket or quickly submit a new one.
+Broker_TicketStatus is a DataBroker plugin to show the current status of
+your GM Help Ticket, with shortcuts for quickly editing or abandoning
+your ticket or submitting a new one.
 
-Right-click the plugin for options.
+Right-click on the plugin for options.
 
 
 Localization
