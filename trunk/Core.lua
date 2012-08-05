@@ -265,7 +265,7 @@ function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 			end
 			if #waitTimeOverrideMessage > 0 then
 				if waitTimeOverrideMinutes then
-					self.statusText = waitTimeOverrideMessage:format(SecondsToTime(waitTimeOverrideMinutes * 60, 1))
+					self.statusText = format(waitTimeOverrideMessage, SecondsToTime(waitTimeOverrideMinutes * 60, 1))
 				else
 					self.statusText = waitTimeOverrideMessage
 				end
@@ -278,7 +278,7 @@ function BrokerTicketStatus:UPDATE_TICKET(category, ticketText, ticketOpenTime, 
 				self.statusText = GM_TICKET_HIGH_VOLUME
 			elseif estimatedWaitTime > 300 then
 				-- Average ticket wait time: %s
-				self.statusText = GM_TICKET_WAIT_TIME:gsub("\n", ""):format(SecondsToTime(estimatedWaitTime, 1))
+				self.statusText = format(gsub(GM_TICKET_WAIT_TIME, "\n", ""), SecondsToTime(estimatedWaitTime, 1))
 			else
 				-- Your ticket will be serviced soon.
 				self.statusText = GM_TICKET_SERVICE_SOON
@@ -370,7 +370,7 @@ function BrokerTicketStatus:OnUpdate(elapsed)
 	end
 	if ticketTimer then
 		ticketTimer = ticketTimer - elapsed
-		local waitTime = GM_TICKET_WAIT_TIME:gsub("\\n", " "):format(SecondsToTime(ticketTimer, 1))
+		local waitTime = format(gsub(GM_TICKET_WAIT_TIME, "\\n", " "), SecondsToTime(ticketTimer, 1))
 		GameTooltip:AddLine(" ")
 		GameTooltip:AddLine(waitTime, 1, 1, 1)
 	end
