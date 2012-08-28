@@ -1,5 +1,5 @@
-## Interface: 40300
-## Version: 4.3.4.wowi:revision
+## Interface: 50001
+## Version: 5.0.4.wowi:revision
 
 ## Title: Broker: Ticket Status
 ## Notes: Show the status of your GM Help Ticket on your DataBroker display.
