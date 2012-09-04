@@ -3,6 +3,8 @@
 
 ## Title: Broker: Ticket Status
 ## Notes: Show the status of your GM Help Ticket on your DataBroker display.
+## Notes-esES: Mostrar el estado de su consulta de MJ en tu exhibición DataBroker.
+## Notes-esMX: Mostrar el estado de su consulta de MJ en su exhibición DataBroker.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Copyright: Copyright (c) 2012 Phanx. All rights reserved.
