@@ -157,8 +157,7 @@ end
 local db
 
 local ticketQueueActive
-local haveTicket
-local haveResponse
+local haveTicket, haveResponse, haveGMSurvey
 local ticketTimer
 
 local lastAlert
