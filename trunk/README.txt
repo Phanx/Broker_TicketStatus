@@ -23,7 +23,7 @@ Localization
 Compatible with English, Deutsch, Español, Français, Italiano, Português,
 Русский, 한국어, 简体中文, and 繁體中文 game clients.
 
-Translated into English, Deutsch, and Español.
+Translated into English, Deutsch, Español, and Português.
 
 To add or update translations for any language, see the Localization tab
 on the CurseForge project page:
