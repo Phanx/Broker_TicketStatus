@@ -75,15 +75,15 @@ do
 		--	Português (Brasil)
 		--	Last updated YYYY-MM-DD by NAME
 		--------------------------------------------------------
-	--	L["Ticket Status"] = ""
-	--	L["Response!"] = ""
-	--	L["You have received a GM ticket response!"] = ""
-	--	L["Survey!"] = ""
-	--	L["Click to open a new ticket."] = ""
-	--	L["Right-click for options."] = ""
-	--	L["Show text without ticket"] = ""
-	--	L["Show status change alerts"] = ""
-	--	L["Alert color"] = ""
+		L["Ticket Status"] = "Estado de consulta"
+		L["Response!"] = "Reposta!"
+		L["You have received a GM ticket response!"] = "A sua consulta foi respondida!"
+		L["Survey!"] = "Pesquisa!"
+		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
+		L["Right-click for options."] = "Clique com o botão direito para opções."
+		L["Show text without ticket"] = "Texto quando não há consultar"
+		L["Show status change alerts"] = "Alertas de mudanças de estado da consulta"
+		L["Alert color"] = "Cor de alertas"
 
 	elseif LOCALE == "ruRU" then
 		--------------------------------------------------------
