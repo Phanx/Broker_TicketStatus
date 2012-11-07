@@ -3,14 +3,16 @@
 
 ## Title: Broker: Ticket Status
 ## Notes: Show the status of your GM Help Ticket on your DataBroker display.
+## Notes-deDE: Zeigt den Status des GM-Tickets auf den DataBroker-Display.
 ## Notes-esES: Mostrar el estado de su consulta de MJ en tu exhibición DataBroker.
 ## Notes-esMX: Mostrar el estado de su consulta de MJ en su exhibición DataBroker.
+## Notes-ptBR: Mostrar o estado da sua consulta de MJ em seu exibição DataBroker.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Copyright: Copyright (c) 2012 Phanx. All rights reserved.
 ## X-License: See accompanying LICENSE file for details.
 ## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
-## X-Localizations: enUS, deDE, esES, esMX
+## X-Localizations: enUS, deDE, esES, esMX, ptBR
 ## X-Website: http://www.wowinterface.com/downloads/info20888
 ## X-Curse-Project-ID: broker-ticketstatus
 ## X-WoWI-ID: 20888
