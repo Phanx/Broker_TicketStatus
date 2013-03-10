@@ -30,15 +30,15 @@ do
 		--	Español
 		--	Last updated 2012-07-04 by Phanx
 		--------------------------------------------------------
-		L["Ticket Status"] = "Estado consulta"
-		L["Response!"] = "Respuesta!"
-		L["You have received a GM ticket response!"] = "Has recibido una respuesta a tu consulta."
-		L["Survey!"] = "Encuesta!"
-		L["Click to open a new ticket."] = "Haz clic para abrir una consulta,"
-		L["Right-click for options."] = "Haz clic derecho para obtener opciones."
+		L["Ticket Status"] = "Estado de consulta"
+		L["Response!"] = "¡Respuesta!"
+		L["You have received a GM ticket response!"] = "¡Has recibido una respuesta a tu consulta!"
+		L["Survey!"] = "¡Encuesta!"
+		L["Click to open a new ticket."] = "Clic para abrir una nueva consulta."
+		L["Right-click for options."] = "Clic derecho para opciones."
 		L["Show text without ticket"] = "Mostrar texto sin consulta abierta"
-		L["Show status change alerts"] = "Mostrar alertas para cambios de estado"
-		L["Alert color"] = "Color de alertas"
+		L["Show status change alerts"] = "Mostrar avisos para cambios de estado"
+		L["Alert color"] = "Color de avisos"
 
 	elseif LOCALE == "frFR" then
 		--------------------------------------------------------
