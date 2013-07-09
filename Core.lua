@@ -1,8 +1,158 @@
-local L = setmetatable({}, { __index = function(t, k)
-	local v = tostring(k)
-	rawset(t, k, v)
-	return v
-end })
+local L = {}
+do
+	local LOCALE = GetLocale()
+	if LOCALE == "deDE" then
+		--------------------------------------------------------
+		--	Deutsch
+		--	Last updated 2012-07-04 by Phanx
+		--------------------------------------------------------
+		L["Ticket Status"] = "Ticketstatus"
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		L["Response!"] = "Antwort!"
+		L["Survey!"] = "Umfrage!"
+		L["Click to open a new ticket."] = "Linksklick um ein Ticket eröffnen."
+		L["Right-click for options."] = "Rechtsklick für Optionen."
+		L["Show text without ticket"] = "Text ohne offenes Ticket"
+		L["Show status change alerts"] = "Statusänderungsbenachrichtigungen"
+		L["Alert color"] = "Benachrichtigungenfarbe"
+
+	elseif LOCALE == "esES" or LOCALE == "esMX" then
+		--------------------------------------------------------
+		--	Español
+		--	Last updated 2013-07-08 by Phanx
+		--------------------------------------------------------
+		L["Ticket Status"] = "Estado de consulta"
+		L["Open"] = "Abierta"
+		L["Needs more info!"] = "Requiere más info!"
+		L["Response!"] = "¡Respuesta!"
+		L["Survey!"] = "¡Encuesta!"
+		L["Click to open a new ticket."] = "Clic para abrir una nueva consulta."
+		L["Right-click for options."] = "Clic derecho para opciones."
+		L["Show text without ticket"] = "Texto sin consulta abierta"
+		L["Show status change alerts"] = "Avisos para cambios de estado"
+		L["Alert color"] = "Color de avisos"
+
+	elseif LOCALE == "frFR" then
+		--------------------------------------------------------
+		--	Français
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+
+	elseif LOCALE == "itIT" then
+		--------------------------------------------------------
+		--	Italiano
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+
+	elseif LOCALE == "ptBR" then
+		--------------------------------------------------------
+		--	Português (Brasil)
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		L["Ticket Status"] = "Estado de consulta"
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		L["Response!"] = "Reposta!"
+		L["Survey!"] = "Pesquisa!"
+		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
+		L["Right-click for options."] = "Clique com o botão direito para opções."
+		L["Show text without ticket"] = "Texto quando não há consultar"
+		L["Show status change alerts"] = "Alertas de mudanças de estado da consulta"
+		L["Alert color"] = "Cor de alertas"
+
+	elseif LOCALE == "ruRU" then
+		--------------------------------------------------------
+		--	Русский
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+
+	elseif LOCALE == "koKR" then
+		--------------------------------------------------------
+		--	한국어
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+
+	elseif LOCALE == "zhCN" then
+		--------------------------------------------------------
+		--	简体中文
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+
+	elseif LOCALE == "zhTW" then
+		--------------------------------------------------------
+		--	繁體中文
+		--	Last updated YYYY-MM-DD by NAME
+		--------------------------------------------------------
+		--L["Ticket Status"] = ""
+		--L["Open"] = ""
+		--L["Needs more info!"] = ""
+		--L["Response!"] = ""
+		--L["Survey!"] = ""
+		--L["Click to open a new ticket."] = ""
+		--L["Right-click for options."] = ""
+		--L["Show text without ticket"] = ""
+		--L["Show status change alerts"] = ""
+		--L["Alert color"] = ""
+	end
+	setmetatable(L, { __index = function(t, k)
+		local v = tostring(k)
+		rawset(t, k, v)
+		return v
+	end })
+end
+
+------------------------------------------------------------------------
 
 local addon = CreateFrame("Frame")
 addon:SetScript("OnEvent", function(self, event, ...) return self[event] and self[event](self, ...) end)
@@ -55,6 +205,8 @@ function addon:PLAYER_ENTERING_WORLD()
 	--print("PLAYER_ENTERING_WORLD")
 	GetWebTicket()
 end
+
+------------------------------------------------------------------------
 
 function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 	--print("UPDATE_WEB_TICKET", hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
@@ -113,6 +265,8 @@ function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex,
 		end
 	end
 end
+
+------------------------------------------------------------------------
 
 addon.obj = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
 	type = "data source",
@@ -191,7 +345,6 @@ addon.obj = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
 		end
 	end,
 })
-
 
 ------------------------------------------------------------------------
 
