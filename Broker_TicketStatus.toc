@@ -3,7 +3,7 @@
 
 ## Title: Broker: Ticket Status
 ## Notes: Show the status of your GM Help Ticket on your DataBroker display.
-## Notes-deDE: Zeigt den Status des GM-Tickets auf den DataBroker-Display.
+## Notes-deDE: Der Status des GM-Tickets auf den DataBroker-Display anzeigen.
 ## Notes-esES: Mostrar el estado del consulta de MJ en el visualización DataBroker.
 ## Notes-esMX: Mostrar el estado del consulta de MJ en el visualización DataBroker.
 ## Notes-ptBR: Mostrar o estado da sua consulta de MJ em seu exibição DataBroker.
