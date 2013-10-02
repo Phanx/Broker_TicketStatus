@@ -4,17 +4,17 @@ do
 	if LOCALE == "deDE" then
 		--------------------------------------------------------
 		--	Deutsch
-		--	Last updated 2012-07-04 by Phanx
+		--	Last updated 2013-10-02 by Phanx
 		--------------------------------------------------------
 		L["Ticket Status"] = "Ticketstatus"
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
+		L["Open"] = "Offene"
+		L["Needs more info!"] = "Mehr Info benötigt!"
 		L["Response!"] = "Antwort!"
 		L["Survey!"] = "Umfrage!"
 		L["Click to open a new ticket."] = "Linksklick um ein Ticket eröffnen."
 		L["Right-click for options."] = "Rechtsklick für Optionen."
-		L["Show text without ticket"] = "Text ohne offenes Ticket"
-		L["Show status change alerts"] = "Statusänderungsbenachrichtigungen"
+		L["Show text without ticket"] = "Text ohne offene Ticket"
+		L["Show status change alerts"] = "Statusänderung-Benachrichtigungen"
 		L["Alert color"] = "Benachrichtigungenfarbe"
 
 	elseif LOCALE == "esES" or LOCALE == "esMX" then
@@ -68,11 +68,11 @@ do
 	elseif LOCALE == "ptBR" then
 		--------------------------------------------------------
 		--	Português (Brasil)
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2013-10-02 by Phanx
 		--------------------------------------------------------
 		L["Ticket Status"] = "Estado de consulta"
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
+		L["Open"] = "Aberta"
+		L["Needs more info!"] = "Necessária mais info!"
 		L["Response!"] = "Reposta!"
 		L["Survey!"] = "Pesquisa!"
 		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
