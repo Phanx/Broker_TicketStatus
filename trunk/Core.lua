@@ -84,18 +84,18 @@ do
 	elseif LOCALE == "ruRU" then
 		--------------------------------------------------------
 		--	Русский
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2013-10-06 by deltor95
 		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
+		L["Ticket Status"] = "Статус запроса"
+		L["Open"] = "Открыть"
+		L["Needs more info!"] = "Нужно больше информации!"
+		L["Response!"] = "Вам ответили!"
+		L["Survey!"] = "Опрос!"
+		L["Click to open a new ticket."] = "Нажмите чтобы ввести новый запрос"
+		L["Right-click for options."] = "Щелкните ПКМ чтобы открыть настройки"
+		L["Show text without ticket"] = "Показать текст без запроса"
+		L["Show status change alerts"] = "Уведомить об изменении статуса"
+		L["Alert color"] = "Цвет оповещений"
 
 	elseif LOCALE == "koKR" then
 		--------------------------------------------------------
@@ -116,34 +116,34 @@ do
 	elseif LOCALE == "zhCN" then
 		--------------------------------------------------------
 		--	简体中文
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2013-07-08 by zhTW
 		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
+		L["Ticket Status"] = "回报单状态"
+		L["Open"] = "开启"
+		L["Needs more info!"] = "需要更多信息!"
+		L["Response!"] = "回应!"
+		L["Survey!"] = "调查中!"
+		L["Right-click for options."] = "右键点击开启选项。"
+		L["Click to open a new ticket."] = "点击开启一个新的回报单。"
+		L["Show text without ticket"] = "显示无回报单文字"
+		L["Show status change alerts"] = "显示状态变化提示"
+		L["Alert color"] = "提示颜色"
 
 	elseif LOCALE == "zhTW" then
 		--------------------------------------------------------
 		--	繁體中文
-		--	Last updated YYYY-MM-DD by NAME
+		--	Last updated 2013-07-08 by zhTW
 		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
+		L["Ticket Status"] = "回報單狀態"
+		L["Open"] = "開啟"
+		L["Needs more info!"] = "需要更多資訊!"
+		L["Response!"] = "回應!"
+		L["Survey!"] = "調查中!"
+		L["Click to open a new ticket."] = "點擊開啟一個新的回報單。"
+		L["Right-click for options."] = "右鍵點擊開啟選項。"
+		L["Show text without ticket"] = "顯示無回報單文字"
+		L["Show status change alerts"] = "顯示狀態變化提示"
+		L["Alert color"] = "提示顏色"
 	end
 	setmetatable(L, { __index = function(t, k)
 		local v = tostring(k)
