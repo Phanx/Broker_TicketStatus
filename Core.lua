@@ -11,11 +11,11 @@ do
 		L["Needs more info!"] = "Mehr Info benötigt!"
 		L["Response!"] = "Antwort!"
 		L["Survey!"] = "Umfrage!"
-		L["Click to open a new ticket."] = "Linksklick um ein Ticket eröffnen."
+		L["Click to open a new ticket."] = "Linksklick, um ein Ticket eröffnen."
 		L["Right-click for options."] = "Rechtsklick für Optionen."
-		L["Show text without ticket"] = "Text ohne offene Ticket"
-		L["Show status change alerts"] = "Statusänderung-Benachrichtigungen"
-		L["Alert color"] = "Benachrichtigungenfarbe"
+		L["Show text without ticket"] = "Text ohne offenes Ticket"
+		L["Show status change alerts"] = "Statusänderungsbekanntmachungen"
+		L["Alert color"] = "Bekanntmachungsfarbe"
 
 	elseif LOCALE == "esES" or LOCALE == "esMX" then
 		--------------------------------------------------------
@@ -209,37 +209,35 @@ end
 ------------------------------------------------------------------------
 
 function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
-	--print("UPDATE_WEB_TICKET", hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
+	-- print("UPDATE_WEB_TICKET", hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 
 	self.hasTicket = nil
 	self.hasResponse = nil
 	self.hasSurvey = nil
 	self.caseIndex = nil
 
-	if not hasTicket then
-		-- No ticket
-		self.titleText = HELP_TICKET_OPEN -- Open a ticket.
-		self.obj.text = self.db.textNoTicket and titleText or ""
-	else
+	if hasTicket then
 		-- Has a ticket
 		self.hasTicket = true
 
 		if ticketStatus == LE_TICKET_STATUS_NMI then
-			-- Ticket needs more info
+			-- print("Ticket needs more info")
 			self.caseIndex = caseIndex
 			self.titleText = TICKET_STATUS -- "You have an open ticket."
 			self.statusText = TICKET_STATUS_NMI -- "Your ticket requires additional information"
 			self.obj.text = L["Needs more info!"]
+			return
 
 		elseif ticketStatus == LE_TICKET_STATUS_RESPONSE then
-			-- Ticket has a response
+			-- print("Ticket has a response")
 			self.hasResponse = true
 			self.caseIndex = caseIndex
 			self.titleText = GM_RESPONSE_ALERT -- "You have received a GM response! Click here to read it."
 			self.obj.text = L["Response!"]
+			return
 
 		elseif ticketStatus == LE_TICKET_STATUS_OPEN then
-			-- Ticket is open
+			-- print("Ticket is open")
 			self.caseIndex = caseIndex
 			self.titleText = TICKET_STATUS -- "You have an open ticket."
 
@@ -255,16 +253,29 @@ function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex,
 				self.statusText = GM_TICKET_UNAVAILABLE -- "Wait time currently unavailable."
 			end
 			self.obj.text = L["Open"]
+			return
 
 		elseif ticketStatus == LE_TICKET_STATUS_SURVEY and numTickets == 1 then
 			-- Survey is available
-			self.hasSurvey = true
-			self.caseIndex = caseIndex
-			self.titleText = CHOSEN_FOR_GMSURVEY -- "You have been chosen to fill out a GM survey."
-			self.obj.text = L["Survey!"]
 		end
 	end
+
+	-- No ticket
+	self.titleText = HELP_TICKET_OPEN -- Open a ticket.
+	self.obj.text = self.db.textNoTicket and titleText or ""
 end
+
+function addon:GMSURVEY_DISPLAY()
+	-- print("Survey is available")
+	self.hasSurvey = true
+	self.titleText = CHOSEN_FOR_GMSURVEY -- "You have been chosen to fill out a GM survey."
+	self.obj.text = L["Survey!"]
+end
+
+hooksecurefunc(StaticPopupDialogs["TAKE_GM_SURVEY"], "OnCancel", function()
+	addon.hasSurvey = false
+	GetWebTicket()
+end)
 
 ------------------------------------------------------------------------
 
@@ -341,7 +352,6 @@ addon.obj = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
 		else
 			-- Open form to submit new ticket
 			HelpFrame_ShowFrame(HELPFRAME_SUBMIT_TICKET)
-			HelpBrowser:NavigateHome("GMTicketStatus")
 		end
 	end,
 })
