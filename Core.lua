@@ -4,7 +4,7 @@ do
 	if LOCALE == "deDE" then
 		--------------------------------------------------------
 		--	Deutsch
-		--	Last updated 2013-10-02 by Phanx
+		--	Last updated 2014-01-27 by Phanx
 		--------------------------------------------------------
 		L["Ticket Status"] = "Ticketstatus"
 		L["Open"] = "Offene"
@@ -12,6 +12,8 @@ do
 		L["Response!"] = "Antwort!"
 		L["Survey!"] = "Umfrage!"
 		L["Click to open a new ticket."] = "Linksklick, um ein Ticket eröffnen."
+		L["Click to edit your ticket."] = "Linksklick, um Ihr Ticket bearbeiten."
+		L["Middle-click to abandon your ticket."] = "Mittellick, um Ihr Ticket verlassen."
 		L["Right-click for options."] = "Rechtsklick für Optionen."
 		L["Show text without ticket"] = "Text ohne offenes Ticket"
 		L["Show status change alerts"] = "Statusänderungsbekanntmachungen"
@@ -20,7 +22,7 @@ do
 	elseif LOCALE == "esES" or LOCALE == "esMX" then
 		--------------------------------------------------------
 		--	Español
-		--	Last updated 2013-07-08 by Phanx
+		--	Last updated 2014-01-27 by Phanx
 		--------------------------------------------------------
 		L["Ticket Status"] = "Estado de consulta"
 		L["Open"] = "Abierta"
@@ -28,6 +30,8 @@ do
 		L["Response!"] = "¡Respuesta!"
 		L["Survey!"] = "¡Encuesta!"
 		L["Click to open a new ticket."] = "Clic para abrir una nueva consulta."
+		L["Click to edit your ticket."] = "Clic para editar tu consulta."
+		L["Middle-click to abandon your ticket."] = "Clic medio para abandonar tu consulta."
 		L["Right-click for options."] = "Clic derecho para opciones."
 		L["Show text without ticket"] = "Texto sin consulta abierta"
 		L["Show status change alerts"] = "Avisos para cambios de estado"
@@ -44,6 +48,8 @@ do
 		--L["Response!"] = ""
 		--L["Survey!"] = ""
 		--L["Click to open a new ticket."] = ""
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		--L["Right-click for options."] = ""
 		--L["Show text without ticket"] = ""
 		--L["Show status change alerts"] = ""
@@ -60,6 +66,8 @@ do
 		--L["Response!"] = ""
 		--L["Survey!"] = ""
 		--L["Click to open a new ticket."] = ""
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		--L["Right-click for options."] = ""
 		--L["Show text without ticket"] = ""
 		--L["Show status change alerts"] = ""
@@ -76,6 +84,8 @@ do
 		L["Response!"] = "Reposta!"
 		L["Survey!"] = "Pesquisa!"
 		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		L["Right-click for options."] = "Clique com o botão direito para opções."
 		L["Show text without ticket"] = "Texto quando não há consultar"
 		L["Show status change alerts"] = "Alertas de mudanças de estado da consulta"
@@ -92,6 +102,8 @@ do
 		L["Response!"] = "Вам ответили!"
 		L["Survey!"] = "Опрос!"
 		L["Click to open a new ticket."] = "Нажмите чтобы ввести новый запрос"
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		L["Right-click for options."] = "Щелкните ПКМ чтобы открыть настройки"
 		L["Show text without ticket"] = "Показать текст без запроса"
 		L["Show status change alerts"] = "Уведомить об изменении статуса"
@@ -108,6 +120,8 @@ do
 		--L["Response!"] = ""
 		--L["Survey!"] = ""
 		--L["Click to open a new ticket."] = ""
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		--L["Right-click for options."] = ""
 		--L["Show text without ticket"] = ""
 		--L["Show status change alerts"] = ""
@@ -123,8 +137,10 @@ do
 		L["Needs more info!"] = "需要更多信息!"
 		L["Response!"] = "回应!"
 		L["Survey!"] = "调查中!"
-		L["Right-click for options."] = "右键点击开启选项。"
 		L["Click to open a new ticket."] = "点击开启一个新的回报单。"
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
+		L["Right-click for options."] = "右键点击开启选项。"
 		L["Show text without ticket"] = "显示无回报单文字"
 		L["Show status change alerts"] = "显示状态变化提示"
 		L["Alert color"] = "提示颜色"
@@ -140,6 +156,8 @@ do
 		L["Response!"] = "回應!"
 		L["Survey!"] = "調查中!"
 		L["Click to open a new ticket."] = "點擊開啟一個新的回報單。"
+		--L["Click to edit your ticket."] = ""
+		--L["Middle-click to abandon your ticket."] = ""
 		L["Right-click for options."] = "右鍵點擊開啟選項。"
 		L["Show text without ticket"] = "顯示無回報單文字"
 		L["Show status change alerts"] = "顯示狀態變化提示"
@@ -295,12 +313,13 @@ addon.obj = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
 			end
 			if self.caseIndex then
 				GameTooltip:AddLine(" ")
-				GameTooltip:AddLine(HELPFRAME_TICKET_CLICK_HELP, 0.8, 0.8, 0.8) -- "Click here to open your ticket."
+				GameTooltip:AddLine(L["Click to edit your ticket."], 1, 1, 1)
+				GameTooltip:AddLine(L["Middle-click to abandon your ticket."], 1, 1, 1)
 			end
 		else
 			GameTooltip:AddLine(L["Click to open a new ticket."], 1, 1, 1)
 		end
-		GameTooltip:AddLine(L["Right-click for options."], 0.8, 0.8, 0.8)
+		GameTooltip:AddLine(L["Right-click for options."], 1, 1, 1)
 		GameTooltip:Show()
 	end,
 
