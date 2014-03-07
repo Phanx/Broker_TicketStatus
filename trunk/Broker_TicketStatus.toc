@@ -1,17 +1,16 @@
 ## Interface: 50400
-## Version: 5.4.1.wowi:revision
+## Version: 5.4.2.wowi:revision
 
 ## Title: Broker: Ticket Status
 ## Notes: Show the status of your GM Help Ticket on your DataBroker display.
-## Notes-deDE: Status Ihres GM-Tickets auf den DataBroker-Display anzeigen.
+## Notes-deDE: Zeigt auf deiner DataBroker-Anzeige die Status deines GM-Tickets.
 ## Notes-esES: Mostrar el estado del consulta de MJ en el visualización DataBroker.
 ## Notes-esMX: Mostrar el estado del consulta de MJ en el visualización DataBroker.
 ## Notes-ptBR: Mostrar o estado da sua consulta de MJ em seu exibição DataBroker.
 
 ## Author: Phanx
 ## X-Email: addons@phanx.net
-## X-Copyright: Copyright (c) 2012-2013 Phanx. All rights reserved.
-## X-License: See accompanying LICENSE file for details.
+## X-License: Public Domain
 ## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
 ## X-Localizations: enUS, deDE, esES, esMX, ptBR, ruRU, zhCN, zhTW
 ## X-Website: http://www.wowinterface.com/downloads/info20888
