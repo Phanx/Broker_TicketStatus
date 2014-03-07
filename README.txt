@@ -1,10 +1,9 @@
 ﻿Broker_TicketStatus
 ===================
 
-* Copyright (c) 2012-2013 Phanx <addons@phanx.net>. All rights reserved.
-* See the accompanying LICENSE file for more information.
-* http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
-* http://www.curse.com/addons/wow/broker-ticketstatus
+	A World of Warcraft user interface addon by Phanx
+	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus
+	http://www.curse.com/addons/wow/broker-ticketstatus
 
 
 Description
@@ -20,29 +19,27 @@ Right-click on the plugin for options.
 Localization
 ------------
 
-Compatible with English, Deutsch, Español, Français, Italiano,
-Português, Русский, 한국어, 简体中文, and 繁體中文 game clients.
+Compatible with all game locales.
 
 Translated into English, Deutsch, Español, Português, Русский,
 简体中文, and 繁體中文.
 
 Add or update translations on the CurseForge project page:
-
-http://wow.curseforge.com/addons/broker-ticketstatus/localization/
+	http://wow.curseforge.com/addons/broker-ticketstatus/localization/
 
 
 Feedback
 --------
 
-Bugs, errors, or other problems?
-Submit a bug report ticket on either download page.
-
-Feature requests or other suggestions?
-Submit a feature request ticket on either download page.
-
-General questions or comments?
 Post a comment on the WoWInterface download page.
 
-If you need to contact me privately for a reason not listed above,
-you can send me (Phanx) a private message on either download site,
-or email me at <addons@phanx.net>.
+If you are reporting a bug, please include detailed instructions I can
+follow to reproduce the bug myself, whether the bug still happens when
+all other addons are disabled, the exact text of the accompanying error
+message if there is one, and a screenshot if the bug is visual.
+
+If you need to contact me privately, you can send a private message to
+Phanx on either download site, or email me at <addons@phanx.net>. Please
+note that I DO NOT provide private addon support or programming help of
+any kind; if you need help with an addon, or with writing or modifying
+addon code, post a comment, ticket, or forum thread instead!

@@ -1,3 +1,12 @@
+--[[--------------------------------------------------------------------
+	Broker_LFG
+	GM ticket status monitor for your DataBroker display.
+	Written by Phanx <addons@phanx.net>
+	See the accompanying README file for more information.
+	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus
+	http://www.curse.com/addons/wow/broker-ticketstatus
+----------------------------------------------------------------------]]
+
 local L = {}
 do
 	local LOCALE = GetLocale()
