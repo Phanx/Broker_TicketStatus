@@ -7,7 +7,9 @@
 	http://www.curse.com/addons/wow/broker-ticketstatus
 ----------------------------------------------------------------------]]
 
-local L = {}
+local L = {
+	["Open a ticket"] = gsub(HELP_TICKET_OPEN, "|n", " "), -- deDE includes a line break -_-
+}
 do
 	local LOCALE = GetLocale()
 	if LOCALE == "deDE" then
@@ -215,10 +217,16 @@ function addon:PLAYER_LOGIN()
 	self:UnregisterEvent("PLAYER_LOGIN")
 	self.PLAYER_LOGIN = nil
 
+	self.obj.text = self.db.textNoTicket and L["Open a ticket"] or ""
+	-- UPDATE_WEB_TICKET doesn't fire on the PTR, but UPDATE_GM_STATUS
+	-- indicates the ticket system is available.
+	-- Could use GMQuickTicketSystemEnabled() instead?
+
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	self:RegisterEvent("UPDATE_GM_STATUS")
 	self:RegisterEvent("UPDATE_WEB_TICKET")
 
-	local t = 0
+	local t = 5
 	self:SetScript("OnUpdate", function(self, elapsed)
 		t = t - elapsed
 		if t <= 0 then
@@ -229,12 +237,23 @@ function addon:PLAYER_LOGIN()
 end
 
 function addon:PLAYER_ENTERING_WORLD()
-	--print("PLAYER_ENTERING_WORLD")
+	-- print("PLAYER_ENTERING_WORLD")
+	GetGMStatus()
 	GetWebTicket()
 end
 
 ------------------------------------------------------------------------
 
+function addon:UPDATE_GM_STATUS(status)
+	-- print("UPDATE_GM_STATUS", status)
+	if status == GMTICKET_QUEUE_STATUS_ENABLED then
+		self.ticketQueueActive = true
+	else
+		self.ticketQueueActive = false
+		self.obj.text = ADDON_DISABLED
+	end
+end
+		
 function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 	-- print("UPDATE_WEB_TICKET", hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 
@@ -243,7 +262,7 @@ function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex,
 	self.hasSurvey = nil
 	self.caseIndex = nil
 
-	if hasTicket then
+	if hasTicket and (numTickets > 1 or ticketStatus ~= LE_TICKET_STATUS_SURVEY) then
 		-- Has a ticket
 		self.hasTicket = true
 
@@ -281,15 +300,13 @@ function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex,
 			end
 			self.obj.text = L["Open"]
 			return
-
-		elseif ticketStatus == LE_TICKET_STATUS_SURVEY and numTickets == 1 then
-			-- Survey is available
 		end
 	end
 
 	-- No ticket
-	self.titleText = HELP_TICKET_OPEN -- Open a ticket.
-	self.obj.text = self.db.textNoTicket and titleText or ""
+	-- print("No ticket")
+	self.titleText = nil
+	self.obj.text = self.ticketQueueActive and (self.db.textNoTicket and L["Open a ticket"] or "") or ADDON_DISABLED
 end
 
 function addon:GMSURVEY_DISPLAY()
@@ -316,7 +333,9 @@ addon.obj = LibStub("LibDataBroker-1.1"):NewDataObject("TicketStatus", {
 		local self = addon
 		GameTooltip:AddLine(L["Ticket Status"])
 		if self.hasTicket then
-			GameTooltip:AddLine(self.titleText, 1, 1, 1)
+			if self.titleText then
+				GameTooltip:AddLine(self.titleText, 1, 1, 1)
+			end
 			if self.statusText then
 				GameTooltip:AddLine(self.statusText, 1, 1, 1)
 			end
