@@ -1,8 +1,8 @@
 --[[--------------------------------------------------------------------
 	Broker_LFG
 	GM ticket status monitor for your DataBroker display.
-	Written by Phanx <addons@phanx.net>
-	See the accompanying README file for more information.
+	Copyright (c) 2011-2014 Phanx <addons@phanx.net>. All rights reserved.
+	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus
 	http://www.curse.com/addons/wow/broker-ticketstatus
 ----------------------------------------------------------------------]]
@@ -253,7 +253,7 @@ function addon:UPDATE_GM_STATUS(status)
 		self.obj.text = ADDON_DISABLED
 	end
 end
-		
+
 function addon:UPDATE_WEB_TICKET(hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 	-- print("UPDATE_WEB_TICKET", hasTicket, numTickets, ticketStatus, caseIndex, waitTime, waitMsg)
 
