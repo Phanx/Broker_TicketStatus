@@ -87,7 +87,7 @@ do
 	elseif LOCALE == "ptBR" then
 		--------------------------------------------------------
 		--	Português (Brasil)
-		--	Last updated 2013-10-02 by Phanx
+		--	Last updated 2014-08-28 by Phanx
 		--------------------------------------------------------
 		L["Ticket Status"] = "Estado de consulta"
 		L["Open"] = "Aberta"
@@ -95,8 +95,8 @@ do
 		L["Response!"] = "Reposta!"
 		L["Survey!"] = "Pesquisa!"
 		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
+		L["Click to edit your ticket."] = "Clique para editar sua consulta."
+		L["Middle-click to abandon your ticket."] = "Clique com o botão do meio para abandonar sua consulta."
 		L["Right-click for options."] = "Clique com o botão direito para opções."
 		L["Show text without ticket"] = "Texto quando não há consultar"
 		L["Show status change alerts"] = "Alertas de mudanças de estado da consulta"
