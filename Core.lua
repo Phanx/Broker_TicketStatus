@@ -26,7 +26,7 @@ do
 		L["Click to edit your ticket."] = "Linksklick, um Ihr Ticket bearbeiten."
 		L["Middle-click to abandon your ticket."] = "Mittellick, um Ihr Ticket verlassen."
 		L["Right-click for options."] = "Rechtsklick für Optionen."
-		L["Show text without ticket"] = "Text ohne offenes Ticket"
+		L["Show text without ticket"] = "Text ohne offenen Ticket"
 		L["Show status change alerts"] = "Statusänderungsbekanntmachungen"
 		L["Alert color"] = "Bekanntmachungsfarbe"
 
