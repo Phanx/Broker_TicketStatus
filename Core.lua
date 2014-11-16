@@ -1,10 +1,10 @@
 --[[--------------------------------------------------------------------
 	Broker_LFG
-	GM ticket status monitor for your DataBroker display.
+	Shows the status of your GM Help Ticket on your DataBroker display.
 	Copyright (c) 2011-2014 Phanx <addons@phanx.net>. All rights reserved.
-	See the accompanying README and LICENSE files for more information.
-	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus
+	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
 	http://www.curse.com/addons/wow/broker-ticketstatus
+	https://github.com/Phanx/Broker_TicketStatus
 ----------------------------------------------------------------------]]
 
 local L = {
