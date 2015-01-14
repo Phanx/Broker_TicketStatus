@@ -1,5 +1,5 @@
 ## Interface: 60000
-## Version: 6.0.2.43
+## Version: @project-version@
 
 ## Title: Broker: Ticket Status
 ## Notes: Shows the status of your GM Help Ticket on your DataBroker display.
@@ -10,7 +10,7 @@
 
 ## Author: Phanx
 ## X-Email: addons@phanx.net
-## X-Copyright: Copyright (c) 2011-2014 Phanx. All rights reserved.
+## X-Copyright: Copyright (c) 2011-2015 Phanx. All rights reserved.
 ## X-Website: https://github.com/Phanx/Broker_TicketStatus
 
 ## SavedVariables: BrokerTicketStatusDB
@@ -19,4 +19,5 @@ Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
 
-Core.lua
+Localization.lua
+Addon.lua

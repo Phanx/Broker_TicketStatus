@@ -1,189 +1,15 @@
 --[[--------------------------------------------------------------------
-	Broker_LFG
+	Broker_TicketStatus
 	Shows the status of your GM Help Ticket on your DataBroker display.
-	Copyright (c) 2011-2014 Phanx <addons@phanx.net>. All rights reserved.
+	Copyright (c) 2011-2015 Phanx <addons@phanx.net>. All rights reserved.
 	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
 	http://www.curse.com/addons/wow/broker-ticketstatus
 	https://github.com/Phanx/Broker_TicketStatus
 ----------------------------------------------------------------------]]
 
-local L = {
-	["Open a ticket"] = gsub(HELP_TICKET_OPEN, "|n", " "), -- deDE includes a line break -_-
-}
-do
-	local LOCALE = GetLocale()
-	if LOCALE == "deDE" then
-		--------------------------------------------------------
-		--	Deutsch
-		--	Last updated 2014-01-27 by Phanx
-		--------------------------------------------------------
-		L["Ticket Status"] = "Ticketstatus"
-		L["Open"] = "Offene"
-		L["Needs more info!"] = "Mehr Info benötigt!"
-		L["Response!"] = "Antwort!"
-		L["Survey!"] = "Umfrage!"
-		L["Click to open a new ticket."] = "Linksklick, um ein Ticket eröffnen."
-		L["Click to edit your ticket."] = "Linksklick, um Ihr Ticket bearbeiten."
-		L["Middle-click to abandon your ticket."] = "Mittellick, um Ihr Ticket verlassen."
-		L["Right-click for options."] = "Rechtsklick für Optionen."
-		L["Show text without ticket"] = "Text ohne offenen Ticket"
-		L["Show status change alerts"] = "Statusänderungsbekanntmachungen"
-		L["Alert color"] = "Bekanntmachungsfarbe"
+local ADDON, L = ...
 
-	elseif LOCALE == "esES" or LOCALE == "esMX" then
-		--------------------------------------------------------
-		--	Español
-		--	Last updated 2014-01-27 by Phanx
-		--------------------------------------------------------
-		L["Ticket Status"] = "Estado de consulta"
-		L["Open"] = "Abierta"
-		L["Needs more info!"] = "Requiere más info!"
-		L["Response!"] = "¡Respuesta!"
-		L["Survey!"] = "¡Encuesta!"
-		L["Click to open a new ticket."] = "Clic para abrir una nueva consulta."
-		L["Click to edit your ticket."] = "Clic para editar tu consulta."
-		L["Middle-click to abandon your ticket."] = "Clic medio para abandonar tu consulta."
-		L["Right-click for options."] = "Clic derecho para opciones."
-		L["Show text without ticket"] = "Texto sin consulta abierta"
-		L["Show status change alerts"] = "Avisos para cambios de estado"
-		L["Alert color"] = "Color de avisos"
-
-	elseif LOCALE == "frFR" then
-		--------------------------------------------------------
-		--	Français
-		--	Last updated YYYY-MM-DD by NAME
-		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
-
-	elseif LOCALE == "itIT" then
-		--------------------------------------------------------
-		--	Italiano
-		--	Last updated YYYY-MM-DD by NAME
-		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
-
-	elseif LOCALE == "ptBR" then
-		--------------------------------------------------------
-		--	Português (Brasil)
-		--	Last updated 2014-08-28 by Phanx
-		--------------------------------------------------------
-		L["Ticket Status"] = "Estado de consulta"
-		L["Open"] = "Aberta"
-		L["Needs more info!"] = "Necessária mais info!"
-		L["Response!"] = "Reposta!"
-		L["Survey!"] = "Pesquisa!"
-		L["Click to open a new ticket."] = "Clique para abrir uma nova consulta."
-		L["Click to edit your ticket."] = "Clique para editar sua consulta."
-		L["Middle-click to abandon your ticket."] = "Clique com o botão do meio para abandonar sua consulta."
-		L["Right-click for options."] = "Clique com o botão direito para opções."
-		L["Show text without ticket"] = "Texto quando não há consultar"
-		L["Show status change alerts"] = "Alertas de mudanças de estado da consulta"
-		L["Alert color"] = "Cor de alertas"
-
-	elseif LOCALE == "ruRU" then
-		--------------------------------------------------------
-		--	Русский
-		--	Last updated 2013-10-06 by deltor95
-		--------------------------------------------------------
-		L["Ticket Status"] = "Статус запроса"
-		L["Open"] = "Открыть"
-		L["Needs more info!"] = "Нужно больше информации!"
-		L["Response!"] = "Вам ответили!"
-		L["Survey!"] = "Опрос!"
-		L["Click to open a new ticket."] = "Нажмите чтобы ввести новый запрос"
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		L["Right-click for options."] = "Щелкните ПКМ чтобы открыть настройки"
-		L["Show text without ticket"] = "Показать текст без запроса"
-		L["Show status change alerts"] = "Уведомить об изменении статуса"
-		L["Alert color"] = "Цвет оповещений"
-
-	elseif LOCALE == "koKR" then
-		--------------------------------------------------------
-		--	한국어
-		--	Last updated YYYY-MM-DD by NAME
-		--------------------------------------------------------
-		--L["Ticket Status"] = ""
-		--L["Open"] = ""
-		--L["Needs more info!"] = ""
-		--L["Response!"] = ""
-		--L["Survey!"] = ""
-		--L["Click to open a new ticket."] = ""
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		--L["Right-click for options."] = ""
-		--L["Show text without ticket"] = ""
-		--L["Show status change alerts"] = ""
-		--L["Alert color"] = ""
-
-	elseif LOCALE == "zhCN" then
-		--------------------------------------------------------
-		--	简体中文
-		--	Last updated 2013-07-08 by zhTW
-		--------------------------------------------------------
-		L["Ticket Status"] = "回报单状态"
-		L["Open"] = "开启"
-		L["Needs more info!"] = "需要更多信息!"
-		L["Response!"] = "回应!"
-		L["Survey!"] = "调查中!"
-		L["Click to open a new ticket."] = "点击开启一个新的回报单。"
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		L["Right-click for options."] = "右键点击开启选项。"
-		L["Show text without ticket"] = "显示无回报单文字"
-		L["Show status change alerts"] = "显示状态变化提示"
-		L["Alert color"] = "提示颜色"
-
-	elseif LOCALE == "zhTW" then
-		--------------------------------------------------------
-		--	繁體中文
-		--	Last updated 2013-07-08 by zhTW
-		--------------------------------------------------------
-		L["Ticket Status"] = "回報單狀態"
-		L["Open"] = "開啟"
-		L["Needs more info!"] = "需要更多資訊!"
-		L["Response!"] = "回應!"
-		L["Survey!"] = "調查中!"
-		L["Click to open a new ticket."] = "點擊開啟一個新的回報單。"
-		--L["Click to edit your ticket."] = ""
-		--L["Middle-click to abandon your ticket."] = ""
-		L["Right-click for options."] = "右鍵點擊開啟選項。"
-		L["Show text without ticket"] = "顯示無回報單文字"
-		L["Show status change alerts"] = "顯示狀態變化提示"
-		L["Alert color"] = "提示顏色"
-	end
-	setmetatable(L, { __index = function(t, k)
-		local v = tostring(k)
-		rawset(t, k, v)
-		return v
-	end })
-end
-
-------------------------------------------------------------------------
-
-local addon = CreateFrame("Frame")
+local addon = CreateFrame("Frame", ADDON)
 addon:SetScript("OnEvent", function(self, event, ...) return self[event] and self[event](self, ...) end)
 addon:RegisterEvent("PLAYER_LOGIN")
 
@@ -226,14 +52,11 @@ function addon:PLAYER_LOGIN()
 	self:RegisterEvent("UPDATE_GM_STATUS")
 	self:RegisterEvent("UPDATE_WEB_TICKET")
 
-	local t = 5
-	self:SetScript("OnUpdate", function(self, elapsed)
-		t = t - elapsed
-		if t <= 0 then
-			GetWebTicket()
-			t = GMTICKET_CHECK_INTERVAL
-		end
-	end)
+	local function poll()
+		GetWebTicket()
+		C_Timer.After(GMTICKET_CHECK_INTERVAL or 600, poll)
+	end
+	C_Timer.After(5, poll)
 end
 
 function addon:PLAYER_ENTERING_WORLD()
