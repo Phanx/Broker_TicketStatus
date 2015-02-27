@@ -24,9 +24,6 @@ end })
 -- English
 ------------------------------------------------------------------------
 
-L["Middle-click to abandon your ticket."] = "Middle-click to abandon your ticket."
-L["Right-click for options."] = "Right-click for options."
-
 local CURRENT_LOCALE = GetLocale()
 if CURRENT_LOCALE == "enUS" then return end
 
