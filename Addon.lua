@@ -1,9 +1,9 @@
 --[[--------------------------------------------------------------------
 	Broker_TicketStatus
 	Shows the status of your GM Help Ticket on your DataBroker display.
-	Copyright (c) 2011-2015 Phanx <addons@phanx.net>. All rights reserved.
-	http://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
-	http://www.curse.com/addons/wow/broker-ticketstatus
+	Copyright (c) 2011-2016 Phanx <addons@phanx.net>. All rights reserved.
+	https://www.wowinterface.com/downloads/info20888-BrokerTicketStatus.html
+	https://mods.curse.com/addons/wow/broker-ticketstatus
 	https://github.com/Phanx/Broker_TicketStatus
 ----------------------------------------------------------------------]]
 

@@ -1,4 +1,4 @@
-## Interface: 60100
+## Interface: 70100
 ## Version: @project-version@
 
 ## Title: Broker: Ticket Status
@@ -10,8 +10,10 @@
 
 ## Author: Phanx
 ## X-Email: addons@phanx.net
-## X-Copyright: Copyright (c) 2011-2015 Phanx. All rights reserved.
+## X-Copyright: Copyright (c) 2011-2016 Phanx. All rights reserved.
 ## X-Website: https://github.com/Phanx/Broker_TicketStatus
+## X-Curse-Project-ID: broker-ticketstatus
+## X-WoWI-ID: 20888
 
 ## SavedVariables: BrokerTicketStatusDB
 
